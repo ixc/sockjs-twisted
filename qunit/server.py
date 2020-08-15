@@ -114,7 +114,7 @@ class Broadcast(protocol.Protocol):
         self.factory.connections[self] = 1
     
     def dataReceived(self, data):
-        for p in self.factory.connections.keys():
+        for p in list(self.factory.connections.keys()):
             p.transport.write(data)
     
     def connectionLost(self, reason=None):

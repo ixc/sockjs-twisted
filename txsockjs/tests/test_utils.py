@@ -12,7 +12,7 @@ class MockTransport(object):
 class UtilsTestCase(unittest.TestCase):
     encoding = "cp1252"
     def test_normalize(self):
-        for s in ["Hello!",u"こんにちは！",("Hello!",u"こんにちは！"),{"Hello!":u"こんにちは！"}]:
+        for s in ["Hello!","こんにちは！",("Hello!","こんにちは！"),{"Hello!":"こんにちは！"}]:
             n = utils.normalize(s, self.encoding)
             self.assertTrue(isinstance(n, str))
             self.assertEqual(n, n.decode('utf-8', 'ignore').encode('utf-8', 'ignore'))

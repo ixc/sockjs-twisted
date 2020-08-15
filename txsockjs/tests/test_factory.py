@@ -107,5 +107,5 @@ class FactoryUnitTest(BaseUnitTest):
         yield self._render(res, req)
         self.assertEqual(req.value(), 'a["a"]\n')
         # Clean up
-        for p in self.site.resource._sessions.values():
+        for p in list(self.site.resource._sessions.values()):
             p.disconnect()

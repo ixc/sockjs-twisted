@@ -26,12 +26,12 @@
 import json
 
 def normalize(s, encoding):
-    if not isinstance(s, basestring):
+    if not isinstance(s, str):
         try:
             return str(s)
         except UnicodeEncodeError:
-            return unicode(s).encode('utf-8','backslashreplace')
-    elif isinstance(s, unicode):
+            return str(s).encode('utf-8','backslashreplace')
+    elif isinstance(s, str):
         return s.encode('utf-8', 'backslashreplace')
     else:
         if s.decode('utf-8', 'ignore').encode('utf-8', 'ignore') == s: # Ensure s is a valid UTF-8 string

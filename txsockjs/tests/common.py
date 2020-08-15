@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from StringIO import StringIO
+from io import StringIO
 from twisted.internet.protocol import Protocol, Factory
 from twisted.trial import unittest
 from twisted.web.test.test_web import DummyRequest

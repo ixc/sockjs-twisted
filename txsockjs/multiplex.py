@@ -63,7 +63,7 @@ class MultiplexProtocol(Protocol):
             self.factory.unsubscribe(self, topic)
     
     def connectionLost(self, reason=None):
-        for conn in self.factory._connections[self].values():
+        for conn in list(self.factory._connections[self].values()):
             conn.connectionLost(reason)
         del self.factory._connections[self]
 
@@ -81,7 +81,7 @@ class MultiplexFactory(Factory):
     def broadcast(self, name, message):
         targets = []
         message = ",".join(["msg", name, message])
-        for p, topics in self._connections.items():
+        for p, topics in list(self._connections.items()):
             if name in topics:
                 targets.append(p)
         utils.broadcast(message, targets)
